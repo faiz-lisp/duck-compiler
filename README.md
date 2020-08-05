@@ -8,13 +8,14 @@
 ## 鸭语言
 自定义语法，声明变量，有为定义，值为“老王”
 
-### 库定义，固定语法
+  ### 库定义，固定语法
 
-### 函数定义
+  ### 函数定义
 
-### 函数调用
+  ### 函数调用
 
-### 调用c?
+  ### 调用c?
+
 ## 计划
 
 1. add duck compiler
@@ -23,3 +24,10 @@
 4. add x86-64 arm arm64 wasm
 5. add duck os
 6. add duck robot
+
+## to add remove-code function:
+- 依赖 scheme-lib ?
+- 把 remove 填好，(egg.ss文件里面)
+- 可以测试各种用例
+  - make test target=basic 
+  - make test target=if
