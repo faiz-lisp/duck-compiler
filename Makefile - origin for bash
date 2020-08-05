@@ -14,13 +14,13 @@ build:
 
 #make test target=begin
 test %:
-	./scripts/run-test.cmd tests/test-${target}.ss
+	./scripts/run-test.sh tests/test-${target}.ss
 
 test-basic:
-	./scripts/run-test.cmd tests/test-basic.ss 
+	./scripts/run-test.sh tests/test-basic.ss 
 
 test-all:
-	./scripts/run-tests.cmd tests/test-all.ss 
+	./scripts/run-tests.sh tests/test-all.ss 
 
 
 clean:

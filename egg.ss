@@ -169,69 +169,81 @@
       ,@(flatten exp))
 )
 
+;faiz
+
+;(alias def define)
+  
+; (define nil '())
+; (define Fal #f)
+; (define Tru #t)
+; (define nilp null?)
+; (define lisp list?)
+; (define eq eq?)
+; (define atomp atom?)
 
 (define (remove-code e)
-  (printf " remove-code ~a\n" e)
 
   ;faiz
   
-  ; (alias ali alias)
-  ; (ali def define) ;
+  (alias ali alias)
+  (ali def define)   
   
-  ; (define nil '())
-  ; (define Fal #f)
-  ; (define Tru #t)
-  ; (define nilp null?)
-  ; (define lisp list?)
-  ; (define eq eq?)
-  ; (define atomp atom?)
+  (define nil '())
+  (define Fal #f)
+  (define Tru #t)
+  (define nilp null?)
+  (define lisp list?)
+  (define eq eq?)
+  (define atomp atom?)
   
-  ; (def (exist-match? g xs)
-    ; (def (_ xs)
-      ; (if (nilp xs) Fal
-        ; (if (g (car xs)) Tru ;
-        ;   [_ (cdr xs)]
-    ; ) ) )
-    ; (_ xs)
-  ; )
+  (define (exist-match? g xs)
+    (define (_ xs)
+      (if (nilp xs) Fal
+        (if (g (car xs)) Tru ;
+          [_ (cdr xs)]
+    ) ) )
+    (_ xs)
+  )
   
-  ; (def (flat-except-last-layer xs) ;
-    ; (def (_ xs ret)
-      ; (cond
-        ; [(nilp xs) ret]
-        ; [(atomp xs) (cons xs ret)]
-        ; [(exist-match? lisp xs) ;
-          ; (_ (car xs)
-            ; [_ (cdr xs) ret] ) ]
-        ; ( (cons xs ret)
-    ; ) ) )
-    ; (_ xs nil)
-  ; )
-  ; (def (simplify x)
-    ; (cond
-      ; [(atomp x) x]
-      ; [(cdr-nilp x) (car x)]
-      ; ( x
-  ; ) ) )
+  (def (flat-except-last-layer xs) ;
+    (def (_ xs ret)
+      (cond
+        [(nilp xs) ret]
+        [(atomp xs) (cons xs ret)]
+        [(exist-match? lisp xs) ;
+          (_ (car xs)
+            [_ (cdr xs) ret] ) ]
+        ( (cons xs ret)
+    ) ) )
+    (_ xs nil)
+  )
+  (def (simplify x)
+    (cond
+      [(atomp x) x]
+      [(nilp (cdr x)) (car x)]
+      ( x
+  ) ) )
   
-  ; (def (asd xs x) ;
-    ; (def (_ xs)
-      ; (cond
-        ; [(eq xs x) nil]
-        ; [(atomp xs) xs]
-        ; ( (let ([a (car xs)] [d (cdr xs)])
-            ; (cond
-              ; [(eq a x) (simplify [_ d])]
-              ; ( (cons (_ a)
-                  ; (_ d)
-    ; ) ) ) ) ) ) )
-    ; (flat-except-last-layer (_ xs))
-  ; )  
-  ; (asd e 'code)
+  (def (asd xs x) ;
+    (def (_ xs)
+      (cond
+        [(eq xs x) nil]
+        [(atomp xs) xs]
+        ( (let ([a (car xs)] [d (cdr xs)])
+            (cond
+              [(eq a x) (simplify [_ d])]
+              ( (cons (_ a)
+                  (_ d)
+    ) ) ) ) ) ) )
+    (flat-except-last-layer (_ xs))
+  )
   
   ;end
   
-  e
+  (printf " remove-code ~a\n" e)
+  
+  ;e    
+  (asd e 'code)
 )
 
 ;;conver codes =>instruct

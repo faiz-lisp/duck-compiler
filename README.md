@@ -26,7 +26,12 @@
 6. add duck robot
 
 ## to add remove-code function:
-- 依赖 scheme-lib ?
+- 依赖 scheme-lib ? No
+- set path
+  - bash:
+    - export CHEZSCHEMELIBDIRS=.:..
+    - else
+  - cmd: set CHEZSCHEMELIBDIRS=.;..
 - 把 remove 填好，(egg.ss文件里面)
 - 可以测试各种用例
   - make test target=basic 

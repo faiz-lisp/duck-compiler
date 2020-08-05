@@ -36,7 +36,7 @@
         (label
           ifb.1)
         (code
-          (set reg0 16))
+          (set reg0 (+ 1 15)) )
         (label
           ifend.1))
       (label
@@ -88,26 +88,26 @@
     ) ) ) ) ) ) )
     (flat-except-last-layer (_ xs))
   )
-(asd code 'code)
+  (asd code 'code)
 )
 
 ;;return demo 
-; ( (= 8 8)) 
-;    (cmp-jmp reg0 #fse-rep ifb.0 ifa.0)
-;    (label ifa.0) (set reg0 0) (jmp ifend.0)
-;    (label ifb.0)
-;    (= 16 16))
-;    (cmp-jmp reg0 #fse-rep ifb.1 ifa.1)
-;    (label ifa.1)
-;    (set reg0 8)
-;    (jmp ifend.1)
-;    (label ifb.1)
-;    (set reg0 16)
-;    (label ifend.1)
-;    (label ifend.0)
+; ( (= 8 8) ;) 
+;   (cmp-jmp reg0 #fse-rep ifb.0 ifa.0)
+;   (label ifa.0) (set reg0 0) (jmp ifend.0)
+;   (label ifb.0)
+;   (= 16 16) ;)
+;   (cmp-jmp reg0 #fse-rep ifb.1 ifa.1)
+;   (label ifa.1)
+;   (set reg0 8)
+;   (jmp ifend.1)
+;   (label ifb.1)
+;   (set reg0 16)
+;   (label ifend.1)
+;   (label ifend.0)
 ;   (set var.0 reg0)
 ;   (print-value var.0)
-;   )
+; )
 
 (pretty-print (remove-code code))
 
