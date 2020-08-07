@@ -81,13 +81,33 @@
   (let
     ( (asm
         (format
-          ;ori: "`which nasm` ~a.s -f macho && ld -macosx_version_min 10.6 -arch i386 -e _start -no_pie -lc ~a.o -o ~a"
-          ;faiz-cmd: macos?
-          "nasm ~a.s -f macho && ld -arch i386 -e _start -no_pie -lc ~a.o -o ~a"
-          name name name
-    ) ) )
-    ;;(printf "~a\n" asm)
+          ;"`which nasm` ~a.s -f macho && ld -macosx_version_min 10.6 -arch i386 -e _start -no_pie -lc ~a.o -o ~a" ;ori
+          ;"nasm ~a.s -f win32 && ld  -e _start -no_pie -lc ~a.obj -o ~a"
+          ;"nasm ~a.s -f win32 && gcc -e _start -lc ~a.obj -o ~a"
+          
+          ;"nasm ~a.s -f macho && ld -arch i386 -e _start -no_pie -lc ~a.o -o ~a"
+          ;"nasm ~a.s -f win32 && ld -arch i386 -e _start -no_pie -lstdc++ ~a.obj -o ~a"
+          ;"nasm -f win32 ~a.s && ld -lc ~a.obj"
+          ;"nasm -f win32 ~a.s && link ~a.obj libcmt.lib"
+          ;"nasm -f win32 -o ~a.obj ~a.s && cl ~a.obj /link libcmt.lib"
+          ;"nasm -f win32 -o ~a.o ~a.s && gcc -o ~a ~a.o"
+          ;"nasm -f win32 ~a.asm && gcc -c -lstdc++ ~a.obj -o ~a.exe && ld -arch i386 -e _start -no_pie -lstdc++ ~a.o -o ~a"
+          ;"nasm ~a.s -f win32 && ld -arch i386 -e _start -no_pie -lc ~a.obj -o ~a"
+          "nasm ~a.s -f win32"
+          name 
+      ) )
+      (link
+        (format
+          ;"gcc -Wl,-e _start -lc ~a.obj -o ~a"
+          "ld -e _start -no_pie -lc ~a.obj -o ~a"
+          ;"link ~a.obj ~a" ;libcmt.lib"          
+          ;"cl ~a.obj /link libcmt.lib" ;entry?
+          name name
+    ) ) )    
+    (printf "~a\n" asm)
     (system asm)
+    (printf "~a\n" link)
+    (system        link)
 ) )
 
 

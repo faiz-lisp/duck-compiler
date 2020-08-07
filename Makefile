@@ -13,8 +13,8 @@ build:
 	@echo "build"
 
 #make test target=begin
-test %:
-	./scripts/run-test.cmd tests/test-${target}.ss
+# test %:
+	# ./scripts/run-test.cmd tests/test-${target}.ss
 
 test-basic:
 	./scripts/run-test.cmd tests/test-basic.ss 
